@@ -1,29 +1,72 @@
 'use strict';
 
-var loopback = require('loopback');
-var boot = require('loopback-boot');
+require('dotenv').config();
 
-var app = module.exports = loopback();
+const _ = require('lodash');
+const loopback = require('loopback');
+const boot = require('loopback-boot');
+const expressState = require('express-state');
+const path = require('path');
+const createDebugger = require('debug');
 
-app.start = function() {
-    // start the web server
-    return app.listen(function() {
-        app.emit('started');
-        var baseUrl = app.get('url').replace(/\/$/, '');
-        console.log('Web server listening at: %s', baseUrl);
-        if (app.get('loopback-component-explorer')) {
-            var explorerPath = app.get('loopback-component-explorer').mountPath;
-            console.log('Browse your REST API at %s%s', baseUrl, explorerPath);
-        }
-    });
-};
+const log = createDebugger('consultorios:server');
+// force logger to always output
+// this may be brittle
+log.enabled = true;
 
-// Bootstrap the application, configure models, datasources and middleware.
-// Sub-apps like REST API are mounted via boot scripts.
-boot(app, __dirname, function(err) {
-    if (err) throw err;
+const app = loopback();
+const isBeta = !!process.env.BETA;
 
-    // start the server if `$ node server.js`
-    if (require.main === module)
-        app.start();
+expressState.extend(app);
+app.set('state namespace', '__consultorios__');
+app.set(process.env.PORT || 3000);
+app.use(loopback.token());
+app.disable('x-powered-by');
+
+boot(app, {
+    appRootDir: __dirname,
+    dev: process.env.NODE_ENV,
 });
+
+const { mongods } = app.datasources;
+mongods.on('connected', _.once(() => log('> Base de Datos conectada')));
+app.start = _.once(function() {
+    const server = app.listen(app.get('port'), function() {
+        app.emit('started');
+        log(
+            '> El servidor de ALFA CONSULTORIOS está escuchando en el puerto %d modo %s',
+            app.get('port'),
+            app.get('env')
+        );
+        if (isBeta) {
+            log('> ALFA CONSULTORIOS esta en modo BETA');
+        }
+        log(`> Conectando con la BDD ${mongods.settings.url}`);
+    });
+
+    process.on('SIGINT', () => {
+        log('> Apagando el servidor');
+        server.close(() => {
+            log('> El servidor esta cerrado');
+        });
+        log('> Cerrando la conexión con la BDD');
+        mongods.disconnect()
+            .then(() => {
+                log('> BDD conexión cerrada');
+                // exit process
+                // this may close kept alive sockets
+                // eslint-disable-next-line no-process-exit
+                process.exit(0);
+            });
+    });
+});
+
+module.exports = app;
+
+// start the server if `$ node server.js`
+// in production use `$npm start-production`
+// or `$node server/production` to start the server
+// and wait for DB handshake
+if (require.main === module) {
+    app.start();
+}
