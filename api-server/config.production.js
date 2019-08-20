@@ -1,1 +1,3 @@
-export const host = process.env.HOST || 'localhost';
+module.exports = {
+    host: process.env.HOST || 'localhost'
+};
