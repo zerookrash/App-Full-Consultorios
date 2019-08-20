@@ -10,7 +10,7 @@
     },
     "scripts": {
         "lint": "eslint .",
-        "start": "node .",
+        "start": "node server.js",
         "start_windows": "set NODE_ENV=production&&node pm2Start.js",
         "posttest": "npm run lint"
     },
