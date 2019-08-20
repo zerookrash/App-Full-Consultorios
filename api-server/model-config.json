@@ -1,0 +1,51 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "mongods",
+    "public": false
+  },
+  "AccessToken": {
+    "dataSource": "mongods",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "mongods",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "mongods",
+    "public": false,
+    "options": {
+      "strictObjectIDCoercion": true
+    }
+  },
+  "Role": {
+    "dataSource": "mongods",
+    "public": false
+  },
+  "cat_contacto": {
+    "dataSource": "mongods",
+    "public": true
+  },
+  "cat_citas2": {
+    "dataSource": "mongods",
+    "public": true
+  },
+  "cat_usuarios": {
+    "dataSource": "mongods",
+    "public": true
+  }
+}

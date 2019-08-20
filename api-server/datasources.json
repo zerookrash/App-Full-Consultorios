@@ -1,0 +1,10 @@
+{
+    "mongods": {
+        "host": "localhost",
+        "port": 27017,
+        "url": "mongodb+srv://zerookrash:M9rc13l4g0sr3b93lt0s@devf-xqgcv.mongodb.net/test?retryWrites=true&w=majority",
+        "database": "api-consultorios",
+        "name": "mongods",
+        "connector": "mongodb"
+    }
+}

@@ -1,0 +1,83 @@
+.:USUARIOS DEL SISTEMA:.
+ROLES: Administrador, Secretaria y Doctor
+
+// Tabla 1
+// Corresponde a la parte solo del "login.png" { cat_usuarios }
+// Ingresar al sistema, si esta logeado/registrado ingresa al panel de control, solo asi podrá hacer consultas a las tablas posteriores.
+// Se agrega un campo rol para identificar al usuario ingresado.
+// El ingreso es mediante el email y/o username y su password.
+// Se añaden alguno campos.
+
+[
+  {
+    "rol": "doctor",
+    "especialidad": "general",
+    "telefono": "2911274",
+    "consultorio": "101",
+    "contrato": "7899-WER",
+    "expira": "2029-04-19T22:34:19.834Z", 
+    "alta": "2019-04-19T22:34:19.834Z",
+    "realm": "dr",
+    "username": "jhon",
+    "email": "jhon.doctor@gmail.com",
+    "password": "123456"
+  },
+  {
+    "rol": "secretaria",
+    "especialidad": "string",
+    "telefono": "string",
+    "consultorio": "string",
+    "contrato": "string",
+    "expira": "2029-04-19T22:34:19.834Z",
+    "alta": "2019-04-19T22:34:19.834Z",
+    "realm": "sec",
+    "username": "sec",
+    "email": "janny@gmail.com",
+    "password": "123456"
+  }
+]
+
+// Tabla 2
+// Corresponde a la parte del "adminDrs.png" { cat_citas }
+// Cuando un usuario es registrado se le habilita el panel para poder agendar sus citas. [Relacionar]
+// ROLES:
+// Administrador LEER, ESCRIBIR, ACTUALIZAR, BORRAR
+// Secretaria LEER, ACTUALIZAR
+// Doctor LEER, ESCRIBIR, ACTUALIZAR
+
+[
+  {
+    "fecha_cita": "2019-04-19T22:02:26.241Z",
+    "consultorio": "string",
+    "estadoPago": "CHEQUE",
+    "id": "id_cita",
+    "catUsuariosId": "id_usuario"
+  }
+]
+
+// DASHBOARD 
+// MOSTRAR LOS DATOS EXTRAIDOS DE ESTAS TABLAS.
+// EJM. Si es Administrador mostrar los consultorios activos, todas las citas, reportes, etc...  [LÓGICA DE PROGRAMACIÓN]
+// EJM. Si es Secretaria o Doctor mostrar las citas del dia lunes del DR. JHON DOE [LÓGICA DE PROGRAMACIÓN]
+
+// Tabla 3
+// Corresponde a la parte solo del "contacto.png" { cat_contacto }
+// Deja un mensaje para un contacto futuro.
+// TODOS LOS ROLES:
+// LEER la tabla, pero no ESCRIBIR. 
+
+[
+  {
+    "nombre": "Jhon Doe",
+    "correo": "jhon.doe@gmail.com",
+    "mensaje": "lorem ipsum dolor"
+  }
+]
+
+FECHAS:
+var d = new Date();
+var n = d.toISOString();
+
+FILTRAR DOS FECHAS
+{"where":{"fecha_cita":{"between":["2019-04-01T18:30:00.000Z","2019-04-05T18:30:00.000Z"]}}}
+

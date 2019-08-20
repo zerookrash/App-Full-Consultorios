@@ -1,0 +1,58 @@
+{
+  "name": "cat_usuarios",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "rol": {
+      "type": "string",
+      "required": true,
+      "default": "doctor"
+    },
+    "especialidad": {
+      "type": "string",
+      "default": "sin especialidad"
+    },
+    "telefono": {
+      "type": "string",
+      "required": true,
+      "default": "sin telefono"
+    },
+    "consultorio": {
+      "type": "string",
+      "required": true,
+      "default": "sin consultorio"
+    },
+    "contrato": {
+      "type": "string",
+      "required": true,
+      "default": "sin contrato"
+    },
+    "expira": {
+      "type": "date",
+      "required": true
+    },
+    "alta": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "citas": {
+      "type": "hasMany",
+      "model": "cat_citas2",
+      "foreignKey": ""
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}
