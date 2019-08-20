@@ -5,6 +5,9 @@
     "main": "api-server/server.js",
     "private": true,
     "license": "MIT",
+    "engines": {
+        "node": "8"
+    },
     "scripts": {
         "lint": "eslint .",
         "start": "node .",
