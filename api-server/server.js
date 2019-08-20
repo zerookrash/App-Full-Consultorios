@@ -28,10 +28,6 @@ boot(app, {
     dev: process.env.NODE_ENV,
 });
 
-app.use(express.static(__dirname + '/cliente'));
-app.get('*', function(reuest, response) {
-    response.sendFile(path.resolve(__dirname, 'cliente/index.html'));
-});
 
 const { mongods } = app.datasources;
 mongods.on('connected', _.once(() => log('> Base de Datos conectada')));
@@ -58,9 +54,6 @@ app.start = _.once(function() {
         mongods.disconnect()
             .then(() => {
                 log('> BDD conexión cerrada');
-                // exit process
-                // this may close kept alive sockets
-                // eslint-disable-next-line no-process-exit
                 process.exit(0);
             });
     });
@@ -68,10 +61,6 @@ app.start = _.once(function() {
 
 module.exports = app;
 
-// start the server if `$ node server.js`
-// in production use `$npm start-production`
-// or `$node server/production` to start the server
-// and wait for DB handshake
 if (require.main === module) {
     app.start();
 }
