@@ -2,7 +2,7 @@
 
 module.exports = {
 
-    mongods: 'mongodb+srv://zerookrash:<password>@devf-xqgcv.mongodb.net/test?retryWrites=true&w=majority',
+    mongods: process.env.DB_URI,
 
     sessionSecret: process.env.SESSION_SECRET,
 
