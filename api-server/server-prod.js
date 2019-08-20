@@ -19,7 +19,7 @@ const isBeta = !!process.env.BETA;
 
 expressState.extend(app);
 app.set('state namespace', '__consultorios__');
-app.set('port', 3000);
+app.set(process.env.PORT || 3000);
 app.use(loopback.token());
 app.disable('x-powered-by');
 
