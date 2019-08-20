@@ -766,14 +766,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _admin_pages_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./admin/pages.component */ "./src/app/admin/pages.component.ts");
 /* harmony import */ var _admin_inbox_inbox_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./admin/inbox/inbox.component */ "./src/app/admin/inbox/inbox.component.ts");
 /* harmony import */ var _pub_login_login_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./pub/login/login.component */ "./src/app/pub/login/login.component.ts");
-/* harmony import */ var _shared_nopagefound_nopagefound_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./shared/nopagefound/nopagefound.component */ "./src/app/shared/nopagefound/nopagefound.component.ts");
-/* harmony import */ var _pub_home_home_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./pub/home/home.component */ "./src/app/pub/home/home.component.ts");
-/* harmony import */ var _pub_faqs_faqs_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./pub/faqs/faqs.component */ "./src/app/pub/faqs/faqs.component.ts");
-/* harmony import */ var _pub_contacto_contacto_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./pub/contacto/contacto.component */ "./src/app/pub/contacto/contacto.component.ts");
-/* harmony import */ var _pub_pub_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./pub/pub.component */ "./src/app/pub/pub.component.ts");
-/* harmony import */ var _drs_pages_drs_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./drs/pages-drs.component */ "./src/app/drs/pages-drs.component.ts");
-/* harmony import */ var _drs_dashbord_drs_dashbord_drs_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./drs/dashbord-drs/dashbord-drs.component */ "./src/app/drs/dashbord-drs/dashbord-drs.component.ts");
-
+/* harmony import */ var _pub_home_home_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./pub/home/home.component */ "./src/app/pub/home/home.component.ts");
+/* harmony import */ var _pub_faqs_faqs_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./pub/faqs/faqs.component */ "./src/app/pub/faqs/faqs.component.ts");
+/* harmony import */ var _pub_contacto_contacto_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./pub/contacto/contacto.component */ "./src/app/pub/contacto/contacto.component.ts");
+/* harmony import */ var _pub_pub_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./pub/pub.component */ "./src/app/pub/pub.component.ts");
+/* harmony import */ var _drs_pages_drs_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./drs/pages-drs.component */ "./src/app/drs/pages-drs.component.ts");
+/* harmony import */ var _drs_dashbord_drs_dashbord_drs_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./drs/dashbord-drs/dashbord-drs.component */ "./src/app/drs/dashbord-drs/dashbord-drs.component.ts");
 
 
 
@@ -792,11 +790,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var routes = [
     { path: 'pub',
-        component: _pub_pub_component__WEBPACK_IMPORTED_MODULE_14__["PubComponent"],
+        component: _pub_pub_component__WEBPACK_IMPORTED_MODULE_13__["PubComponent"],
         children: [
-            { path: 'home', component: _pub_home_home_component__WEBPACK_IMPORTED_MODULE_11__["HomeComponent"] },
-            { path: 'faqs', component: _pub_faqs_faqs_component__WEBPACK_IMPORTED_MODULE_12__["FaqsComponent"] },
-            { path: 'contacto', component: _pub_contacto_contacto_component__WEBPACK_IMPORTED_MODULE_13__["ContactoComponent"] },
+            { path: 'home', component: _pub_home_home_component__WEBPACK_IMPORTED_MODULE_10__["HomeComponent"] },
+            { path: 'faqs', component: _pub_faqs_faqs_component__WEBPACK_IMPORTED_MODULE_11__["FaqsComponent"] },
+            { path: 'contacto', component: _pub_contacto_contacto_component__WEBPACK_IMPORTED_MODULE_12__["ContactoComponent"] },
             { path: 'login', component: _pub_login_login_component__WEBPACK_IMPORTED_MODULE_9__["LoginComponent"] }
         ] },
     { path: 'pages',
@@ -826,18 +824,18 @@ var routes = [
         ] },
     {
         path: 'drs',
-        component: _drs_pages_drs_component__WEBPACK_IMPORTED_MODULE_15__["PagesDrsComponent"],
+        component: _drs_pages_drs_component__WEBPACK_IMPORTED_MODULE_14__["PagesDrsComponent"],
         children: [
             {
                 path: 'dashboard-drs',
-                component: _drs_dashbord_drs_dashbord_drs_component__WEBPACK_IMPORTED_MODULE_16__["DashbordDrsComponent"],
+                component: _drs_dashbord_drs_dashbord_drs_component__WEBPACK_IMPORTED_MODULE_15__["DashbordDrsComponent"],
                 canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_3__["AuthGuard"]]
             },
             { path: '', redirectTo: 'dashboard-drs', pathMatch: 'full' }
         ]
     },
     { path: '', redirectTo: 'pub/home', pathMatch: 'full' },
-    { path: '**', component: _shared_nopagefound_nopagefound_component__WEBPACK_IMPORTED_MODULE_10__["NopagefoundComponent"] }
+    { path: '**', component: _pub_home_home_component__WEBPACK_IMPORTED_MODULE_10__["HomeComponent"] }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
