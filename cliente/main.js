@@ -451,11 +451,11 @@ var DashboardComponent = /** @class */ (function () {
     DashboardComponent.prototype.onPago = function (id) {
         var _this = this;
         var token = localStorage.getItem('accessToken');
-        this.http.get("http://134.209.76.197:4001/api/cat_citas2s/" + id + "?access_token=" + token)
+        this.http.get("http://localhost:3000/api/cat_citas2s/" + id + "?access_token=" + token)
             .subscribe(function (res) {
             res.estadoPago = 'PAGADO';
             _this.citaMd = res;
-            _this.http.put("http://134.209.76.197:4001/api/cat_usuarios/" + _this.citaMd.catUsuariosId + "/citas/" + _this.citaMd.id + "?access_token=" + token, _this.citaMd)
+            _this.http.put("http://localhost:3000/api/cat_usuarios/" + _this.citaMd.catUsuariosId + "/citas/" + _this.citaMd.id + "?access_token=" + token, _this.citaMd)
                 .subscribe(function (data) { return data; });
             setTimeout(function () {
                 _this.citasServices.getAllCitas();
