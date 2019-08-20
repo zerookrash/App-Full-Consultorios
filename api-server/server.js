@@ -28,6 +28,11 @@ boot(app, {
     dev: process.env.NODE_ENV,
 });
 
+app.use(express.static(__dirname + '/cliente'));
+app.get('*', function(reuest, response) {
+    response.sendFile(path.resolve(__dirname, 'cliente/index.html'));
+});
+
 const { mongods } = app.datasources;
 mongods.on('connected', _.once(() => log('> Base de Datos conectada')));
 app.start = _.once(function() {
