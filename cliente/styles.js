@@ -557,7 +557,7 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/mariovillelalarraza/sandBox/Consultorios/src/styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! /home/zerookrash/sandBox/Consultorios2/src/styles.css */"./src/styles.css");
 
 
 /***/ })
